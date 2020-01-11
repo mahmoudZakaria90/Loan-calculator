@@ -1,28 +1,62 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Loan calculator</h1>
+    <Calculator />
+    <Result />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Calculator from "./components/Calculator.vue";
+import Result from "./components/Result.vue";
 
 export default {
-  name: 'app',
   components: {
-    HelloWorld
+    Calculator,
+    Result
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+*
+  box-sizing: border-box
+#app
+  padding: 15px
+  max-width: 500px
+  margin: auto
+  font:
+    family: "Roboto"
+    size: 16px
+
+h1
+  text-align: center
+  margin-bottom: 25px
+
+
+label
+  position: relative
+  display: inline-block
+  padding: 0 15px
+  margin-bottom: 20px
+
+input
+  padding: 7px 10px
+  border-radius: 3px
+  border: 1px solid #ddd
+  width: 100%
+  font-size: 16px
+  outline: 0
+
+label div
+  margin-bottom: 10px
+  font-weight: 600
+
+button
+  background: transparent
+  padding: 5px 20px
+  border-radius: 5px
+  font-size: inherit
+  cursor: pointer
+  outline: 0
 </style>
