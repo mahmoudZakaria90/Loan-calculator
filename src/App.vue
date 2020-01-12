@@ -1,16 +1,28 @@
 <template>
   <div id="app">
     <h1>Loan calculator</h1>
-    <Calculator />
-    <Result />
+    <Calculator :handleResult="handleResult" />
+    <Result :result="result" :validate="validate" />
   </div>
 </template>
 
 <script>
-import Calculator from "./components/Calculator.vue";
-import Result from "./components/Result.vue";
+import Calculator from "./components/Calculator";
+import Result from "./components/Result";
 
 export default {
+  data() {
+    return {
+      result: undefined,
+      validate: false
+    };
+  },
+  methods: {
+    handleResult(newResult, validate) {
+      this.result = newResult;
+      this.validate = validate;
+    }
+  },
   components: {
     Calculator,
     Result

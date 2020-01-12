@@ -2,32 +2,32 @@
   <form @submit.prevent="calculate(amount, duration)">
     <label for="amount">
       <div>Amout</div>
-      <input id="amount" v-model="amount" />
+      <input id="amount" v-model="amount" placeholder="Enter the amount" />
     </label>
     <label for="duration">
       <div>Duration</div>
-      <input id="duration" v-model="duration" />
+      <input id="duration" v-model="duration" placeholder="Enter the duration" />
     </label>
     <label>
-      <Button type="submit" :disabled="!amount || !duration">Submit</Button>
+      <Button type="submit" id="submit" :disabled="!amount || !duration">Submit</Button>
     </label>
     <ul>
-      <li class="validation-msg" v-for="(msg, key) in validationMSG" :key="key">
-        {{ msg }}
-      </li>
+      <li class="validation-msg" v-for="(msg, key) in validationMSG" :key="key">{{ msg }}</li>
     </ul>
   </form>
 </template>
 
 <script>
 /* eslint no-console: ["error", { allow: ["log"] }] */
-import { EventBus } from "../main";
 import result from "../mockResponse.json";
 export default {
+  props: {
+    handleResult: Function
+  },
   data() {
     return {
-      amount: 10000,
-      duration: 5,
+      amount: null,
+      duration: null,
       minAmount: 10000,
       maxAmount: 100000,
       minDuration: 1,
@@ -45,8 +45,7 @@ export default {
 
       if (amountValidate && durationValidate) {
         if (this.validationMSG.length) this.validationMSG = [];
-        EventBus.$emit("send-results", result);
-        EventBus.$emit("validate", true);
+        this.handleResult(result, true);
         return;
       }
 
@@ -58,7 +57,7 @@ export default {
       if (!durationValidate) {
         this.validationMSG.push("Duration must be between 1 - 5 years.");
       }
-      EventBus.$emit("validate", false);
+      this.handleResult(undefined, false);
     }
   }
 };
