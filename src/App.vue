@@ -58,7 +58,6 @@ input
   border: 1px solid #ddd
   width: 100%
   font-size: 16px
-  outline: 0
 
 label div
   margin-bottom: 10px

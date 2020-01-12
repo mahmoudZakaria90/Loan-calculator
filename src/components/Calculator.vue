@@ -26,8 +26,8 @@ export default {
   },
   data() {
     return {
-      amount: null,
-      duration: null,
+      amount: undefined,
+      duration: undefined,
       minAmount: 10000,
       maxAmount: 100000,
       minDuration: 1,
