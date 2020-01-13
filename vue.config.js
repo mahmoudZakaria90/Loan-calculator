@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: "Loan-calculator"
+  publicPath: "Loan-calculator/dist/"
 };
