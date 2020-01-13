@@ -4,27 +4,18 @@
       <label for="amount">
         <input
           id="amount"
-          v-model="amount"
+          v-currency:EUR="amount"
           placeholder="Enter the amount"
           autocomplete="off"
         />
       </label>
       <label for="duration">
-        <input
-          id="duration"
-          v-model="duration"
-          placeholder="Enter the duration"
-          autocomplete="off"
-        />
+        <input id="duration" v-model="duration" placeholder="Enter the duration" autocomplete="off" />
       </label>
     </div>
-    <Button type="submit" id="submit" :disabled="!amount || !duration"
-      >Submit</Button
-    >
+    <Button type="submit" id="submit" :disabled="!amount || !duration">Submit</Button>
     <ul class="validation-wrap">
-      <li class="validation-msg" v-for="(msg, key) in validationMSG" :key="key">
-        - {{ msg }}
-      </li>
+      <li class="validation-msg" v-for="(msg, key) in validationMSG" :key="key">- {{ msg }}</li>
     </ul>
   </form>
 </template>
@@ -38,8 +29,8 @@ export default {
   },
   data() {
     return {
-      amount: undefined,
-      duration: undefined,
+      amount: "",
+      duration: "",
       minAmount: 10000,
       maxAmount: 100000,
       minDuration: 1,
