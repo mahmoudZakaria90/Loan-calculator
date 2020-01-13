@@ -1,18 +1,30 @@
 <template>
   <form @submit.prevent="calculate(amount, duration)">
-    <label for="amount">
-      <div>Amout</div>
-      <input id="amount" v-model="amount" placeholder="Enter the amount" />
-    </label>
-    <label for="duration">
-      <div>Duration</div>
-      <input id="duration" v-model="duration" placeholder="Enter the duration" />
-    </label>
-    <label>
-      <Button type="submit" id="submit" :disabled="!amount || !duration">Submit</Button>
-    </label>
-    <ul>
-      <li class="validation-msg" v-for="(msg, key) in validationMSG" :key="key">{{ msg }}</li>
+    <div class="row">
+      <label for="amount">
+        <input
+          id="amount"
+          v-model="amount"
+          placeholder="Enter the amount"
+          autocomplete="off"
+        />
+      </label>
+      <label for="duration">
+        <input
+          id="duration"
+          v-model="duration"
+          placeholder="Enter the duration"
+          autocomplete="off"
+        />
+      </label>
+    </div>
+    <Button type="submit" id="submit" :disabled="!amount || !duration"
+      >Submit</Button
+    >
+    <ul class="validation-wrap">
+      <li class="validation-msg" v-for="(msg, key) in validationMSG" :key="key">
+        - {{ msg }}
+      </li>
     </ul>
   </form>
 </template>
@@ -65,19 +77,18 @@ export default {
 
 <style lang="sass" scoped>
 form
-    margin: 0 -15px
+    padding: 0 15px
+
 label
     width: 50%
-    &:last-of-type
-        width: 100%
-        text-align: center
-.use-defaults
-    position: absolute
-    top: 0
-    left: 15px
-    input
-        width: auto
 
-.validation-msg
-    color: red
+.validation
+    &-wrap
+      max-width: 350px
+      margin-left: auto
+      padding: 0
+      list-style: none
+    &-msg
+      color: var(--error)
+      margin-bottom: 10px
 </style>
